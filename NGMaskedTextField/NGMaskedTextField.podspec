@@ -7,9 +7,9 @@ s.license      = 'MIT'
 s.author       = { "Faruk Kuscan" => "faruk.kuscan@ngier.com" }
 s.source       = { :git => "https://github.com/Ngier/NGMaskedTextField.git", :tag => "0.1" }
 
-s.ios.deployment_target = '4.0'
+s.ios.deployment_target = '6.0'
 
-s.source_files = 'Classes', 'Classes/**/*.{h,m}'
+s.source_files = 'Classes', '**/*.{h,m}'
 
 s.requires_arc = true
 end
