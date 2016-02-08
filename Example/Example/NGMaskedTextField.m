@@ -1,9 +1,9 @@
 //
 //  NGMaskedTextField.m
-//  NGMaskedTextField
+//  Example
 //
-//  Created by Faruk Kuşcan on 07/10/15.
-//  Copyright © 2015 ngier. All rights reserved.
+//  Created by Berk on 05/02/16.
+//  Copyright © 2016 Berk Dilek. All rights reserved.
 //
 
 #import "NGMaskedTextField.h"
@@ -46,6 +46,7 @@ NSString *kMaskedTextFieldDefaultFill = @"";
     return self;
 }
 
+
 - (BOOL)shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if (self.maskString == nil) {
         return YES;
@@ -62,12 +63,20 @@ NSString *kMaskedTextFieldDefaultFill = @"";
     }
     
     if (string.length > 1) {
-        // TODO
-        // inserting more than 1 character at once is not supported yet
-        return NO;
-    }
-    
-    if (string.length > 0) {
+        // inserting more than 1 character at once
+        
+        NSMutableArray *multipleCharString = [NSMutableArray array];
+        for (int i = 0; i<string.length; i++) {
+            [multipleCharString addObject:[NSString stringWithFormat:@"%c",[string characterAtIndex:i]]];
+        }
+
+        
+        for (int i = 0; i < multipleCharString.count; i++) {
+            if ([self.delegate respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)]) {
+                [self.delegate textField:self shouldChangeCharactersInRange:NSMakeRange(i, 0) replacementString:[multipleCharString objectAtIndex:i]];
+            }
+        }
+    } else if (string.length > 0) {
         // adding characters with length: string.length
         if (self.inputString.length + string.length <= [self desiredInputLength]) {
             NSInteger chartype = [self desiredInputCharacterTypeForOffset:0];
@@ -177,7 +186,8 @@ NSString *kMaskedTextFieldDefaultFill = @"";
     if (self.maskString == nil) {
         return [super caretRectForPosition:position];
     } else {
-        return CGRectZero;
+        return [super caretRectForPosition:position];
+
     }
 }
 

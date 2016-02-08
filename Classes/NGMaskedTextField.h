@@ -1,9 +1,9 @@
 //
 //  NGMaskedTextField.h
-//  NGMaskedTextField
+//  Example
 //
-//  Created by Faruk Kuşcan on 07/10/15.
-//  Copyright © 2015 ngier. All rights reserved.
+//  Created by Berk on 05/02/16.
+//  Copyright © 2016 Berk Dilek. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -19,3 +19,5 @@
 - (BOOL)shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
 
 @end
+
+
