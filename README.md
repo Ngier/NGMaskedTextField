@@ -11,7 +11,7 @@ OR
 2) Use cocoa pods. Add following line to Podfile.
 
 ```
-    pod "NGMaskedTextField"
+    pod 'NGMaskedTextField'
 ```
 
 #Usage
