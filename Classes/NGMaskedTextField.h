@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString *defaultFill;
 
 - (BOOL)shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
+- (NSString *)executeMaskOnInput;
 
 @end
 
